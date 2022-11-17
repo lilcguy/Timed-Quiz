@@ -13,12 +13,43 @@
 //make separate variables for each question?
 
 var score = 0; //in global scope. initially set to 0.
-var timer = 100; //probably has to be in milli
+var timer = 5; //probably has to be in milli
+
 var initials = "";
 
 var questions = ["yes?", "yes?", "yes?", "yes?", "yes?", "yes?",];
 
+
+document.getElementById("btn").addEventListener("click", timerBtn);
+
+
+
+function timerBtn() { //when the corresponding button is pressed 
+
+    var demo = setInterval(counter, 1000)
+
+    function counter() { 
+        timer--
+        console.log(timer);
+        document.getElementById("timer").innerHTML = "Time left: " + timer //displays on html
+        if (timer === 0){ //stop at 0 
+            window.alert("time out!");
+            clearInterval(demo); //stops execution
+            timer = 5; //resets the timer for next run.
+            
+        }
+      
+    }
+}
+
+
+
 function quizGame() {
+    
+
+
+
+
 
     var start = window.confirm("play quiz game?")
         if (start === true) {
@@ -69,7 +100,7 @@ function saveScore (){
     
 }
 
-quizGame(); //runs the game on start up.
+//quizGame(); //runs the game on start up. this should run based on a click event.
 
 
 
@@ -91,12 +122,3 @@ if statement: if something is true, then run this code.
 
 */
 
-/* other
-
- if statement: if something is true, then run this code. 
-
-
-
-
-
-*/
