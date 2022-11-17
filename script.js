@@ -10,25 +10,27 @@
 //known bugs
 
 var score = 0; //in global scope. initially set to 0.
-var maxScore = 5;
+
+var pos = 1; //position
 
 var timer = 60; 
 
 var initials = "";
 
-var questions = ["what is the correct spelling of goat?", ]
-//var q1 = "what is the correct spelling of goat?";
-var q2 = "";
-var q3 = "";
-var q4 = "";
-var q5 = "";
-console.log("score is " + score);
+var questions = 
+["what is the correct spelling of goat?", 
+"who stinks?",
+]
+
+
+console.log("starting score is " + score);
 
 
 document.getElementById("btn").addEventListener("click", timerBtn);
 
 function displayQuestion1() {
-    document.getElementById("q").innerHTML = "Question: " + questions[0];
+    
+    document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[0];
 
         document.getElementById("a1").innerHTML = "goat";
             document.getElementById("a1").addEventListener("click", scoreUp);
@@ -41,12 +43,34 @@ function displayQuestion1() {
 
         document.getElementById("a4").innerHTML = "crunk";
             document.getElementById("a4").addEventListener("click", scoreDown);
+
+            document.getElementById("next").addEventListener("click", displayQuestion2);
 } 
 
+function displayQuestion2() {
+    document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[1];
+
+        document.getElementById("a1").innerHTML = "steve";
+            document.getElementById("a1").addEventListener("click", scoreUp);
+                
+        document.getElementById("a2").innerHTML = "goot";
+            document.getElementById("a2").addEventListener("click", scoreDown);
+
+        document.getElementById("a3").innerHTML = "gate";
+            document.getElementById("a3").addEventListener("click", scoreDown);
+
+        document.getElementById("a4").innerHTML = "crunk";
+            document.getElementById("a4").addEventListener("click", scoreDown);
+
+            document.getElementById("next").addEventListener("click", displayQuestion1);
+}
+
+
 function scoreUp() {
-    document.getElementById("rw").innerHTML = "Correct!"
+    document.getElementById("rw").innerHTML = "Correct!";
     score++;
     console.log(score);
+    position();
 }
 
 function scoreDown() {
@@ -55,10 +79,19 @@ function scoreDown() {
     } else {
     document.getElementById("rw").innerHTML = "Incorrect!"
     score--;
+    //timer - 5; //how to get it to remove time on incorrect answer?
     console.log(score); 
     }
 
 }
+
+function position () { //track position in quiz
+    pos++
+    console.log("position is " + pos);
+}
+
+
+
 
 function reset() {
     //clear all elements in the HTML to reset
@@ -67,9 +100,11 @@ function reset() {
     document.getElementById("a2").innerHTML = "";
     document.getElementById("a3").innerHTML = "";
     document.getElementById("a4").innerHTML = "";
+    document.getElementById("rw").innerHTML = "";
+    
 }
 
-//document.getElementById("q").innerHTML = "Question: " + q1;
+
 
 function timerBtn() { //when the corresponding button is pressed 
 
@@ -92,39 +127,6 @@ displayQuestion1();
    
 }
 
-
-
-function quizGame() {
-    
-
-
-
-
-
-    var start = window.confirm("play quiz game?")
-        if (start === true) {
-            window.alert("lets begin!");
-        } else {
-            return;
-        }
-
-    for (var i=0; i < questions.length; i++) {
-        var correct = window.confirm("yes?")
-        if (correct === true) {
-            window.alert("right!");
-            score++ //add to score
-            console.log(score);
-        } else {
-            window.alert("wrong!");
-            //timer - 50 remove time from timer in wrong answer
-        }
-    }
-    
-    window.alert("your score is " + score + "!");
-    saveScore();
-
-
-}
 
 function saveScore (){
     
@@ -150,25 +152,23 @@ function saveScore (){
     
 }
 
-//quizGame(); //runs the game on start up. this should run based on a click event.
 
 
 
-/*known problems***
+
+//known problems**
 
 //timer?
 //buttons?
 //local storage overwrites: do i want it to add a new one each time so one can keep track of all their
-scores?
+//scores?
+
+//cant get timer to subtract on incorrect
+//buttons are sometimes not responsive
+    //also ugly
 
 
 
 
 
-have it getItem() and display it.
-if statement: if something is true, then run this code.
-
-
-
-*/
 
