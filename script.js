@@ -1,6 +1,3 @@
-//make start button, add event listener that runs the game function on press
-
-//make a timer and display it 
 
 //make an array of questions 
         //make var for number of correct (score)
@@ -10,19 +7,69 @@
         //make prompt for initials and score and set it in the local storage
 
 
-//make separate variables for each question?
+//known bugs
 
 var score = 0; //in global scope. initially set to 0.
-var timer = 5; //probably has to be in milli
+var maxScore = 5;
+
+var timer = 60; 
 
 var initials = "";
 
-var questions = ["yes?", "yes?", "yes?", "yes?", "yes?", "yes?",];
+var questions = ["what is the correct spelling of goat?", ]
+//var q1 = "what is the correct spelling of goat?";
+var q2 = "";
+var q3 = "";
+var q4 = "";
+var q5 = "";
+console.log("score is " + score);
 
 
 document.getElementById("btn").addEventListener("click", timerBtn);
 
+function displayQuestion1() {
+    document.getElementById("q").innerHTML = "Question: " + questions[0];
 
+        document.getElementById("a1").innerHTML = "goat";
+            document.getElementById("a1").addEventListener("click", scoreUp);
+                
+        document.getElementById("a2").innerHTML = "goot";
+            document.getElementById("a2").addEventListener("click", scoreDown);
+
+        document.getElementById("a3").innerHTML = "gate";
+            document.getElementById("a3").addEventListener("click", scoreDown);
+
+        document.getElementById("a4").innerHTML = "crunk";
+            document.getElementById("a4").addEventListener("click", scoreDown);
+} 
+
+function scoreUp() {
+    document.getElementById("rw").innerHTML = "Correct!"
+    score++;
+    console.log(score);
+}
+
+function scoreDown() {
+    if (score <= 0 ){
+        score + 0
+    } else {
+    document.getElementById("rw").innerHTML = "Incorrect!"
+    score--;
+    console.log(score); 
+    }
+
+}
+
+function reset() {
+    //clear all elements in the HTML to reset
+    document.getElementById("q").innerHTML = "";
+    document.getElementById("a1").innerHTML = "";
+    document.getElementById("a2").innerHTML = "";
+    document.getElementById("a3").innerHTML = "";
+    document.getElementById("a4").innerHTML = "";
+}
+
+//document.getElementById("q").innerHTML = "Question: " + q1;
 
 function timerBtn() { //when the corresponding button is pressed 
 
@@ -30,16 +77,19 @@ function timerBtn() { //when the corresponding button is pressed
 
     function counter() { 
         timer--
-        console.log(timer);
+        //console.log(timer);
         document.getElementById("timer").innerHTML = "Time left: " + timer //displays on html
         if (timer === 0){ //stop at 0 
             window.alert("time out!");
             clearInterval(demo); //stops execution
-            timer = 5; //resets the timer for next run.
+            timer = 60; //resets the timer for next run.
+            reset();
             
         }
       
     }
+displayQuestion1();
+   
 }
 
 
