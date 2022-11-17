@@ -10,7 +10,7 @@
         //make prompt for initials and score and set it in the local storage
 
 
-//make separate variables for each question, 
+//make separate variables for each question?
 
 var score = 0; //in global scope. initially set to 0.
 var timer = 100; //probably has to be in milli
@@ -59,14 +59,44 @@ function saveScore (){
     console.log(score);
     window.alert("thanks! your initials and score have been saved to local storage.")
 
-    localStorage.setItem("high score: ", score)
+    localStorage.setItem("previous score: ", score)
     localStorage.setItem("Initials: ", initials);
 
     
 
     //enter initials into local storage
-    //insert element that 
+    //insert element that gets value and displays
     
 }
 
 quizGame(); //runs the game on start up.
+
+
+
+/*known problems***
+
+//timer?
+//buttons?
+//local storage overwrites: do i want it to add a new one each time so one can keep track of all their
+scores?
+
+
+
+
+
+have it getItem() and display it.
+if statement: if something is true, then run this code.
+
+
+
+*/
+
+/* other
+
+ if statement: if something is true, then run this code. 
+
+
+
+
+
+*/
