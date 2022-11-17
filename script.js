@@ -65,6 +65,8 @@ function displayQuestion2() {
             document.getElementById("next").addEventListener("click", displayQuestion1);
 }
 
+//add functions for rest of questions, and on last question add function for game over, and 
+//run the save score and initials function
 
 function scoreUp() {
     document.getElementById("rw").innerHTML = "Correct!";
