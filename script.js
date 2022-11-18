@@ -1,14 +1,4 @@
 
-//make an array of questions 
-        //make var for number of correct (score)
-        //make var 
-        //for loop
-
-        //make prompt for initials and score and set it in the local storage
-
-
-//known bugs
-
 var score = 0; //in global scope. initially set to 0.
 
 var pos = 1; //position
@@ -18,8 +8,11 @@ var timer = 60;
 var initials = "";
 
 var questions = 
-["what is the correct spelling of goat?", 
-"who stinks?",
+["What is the correct syntax for a console log?", 
+"What shortcut allows you to access the dev tools in the browser?",
+"A boolean can be true or...",
+"What is NOT a primitive data type?",
+"What is NOT a keyword to declare a variable?"
 ]
 
 
@@ -32,41 +25,100 @@ function displayQuestion1() {
     
     document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[0];
 
-        document.getElementById("a1").innerHTML = "goat";
+        document.getElementById("a1").innerHTML = "console.log()";
             document.getElementById("a1").addEventListener("click", scoreUp);
                 
-        document.getElementById("a2").innerHTML = "goot";
+        document.getElementById("a2").innerHTML = "log.console()";
             document.getElementById("a2").addEventListener("click", scoreDown);
 
-        document.getElementById("a3").innerHTML = "gate";
+        document.getElementById("a3").innerHTML = "console()";
             document.getElementById("a3").addEventListener("click", scoreDown);
 
-        document.getElementById("a4").innerHTML = "crunk";
+        document.getElementById("a4").innerHTML = "log = console";
             document.getElementById("a4").addEventListener("click", scoreDown);
 
             document.getElementById("next").addEventListener("click", displayQuestion2);
 } 
 
 function displayQuestion2() {
+    resetResponse();
     document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[1];
 
-        document.getElementById("a1").innerHTML = "steve";
-            document.getElementById("a1").addEventListener("click", scoreUp);
+        document.getElementById("a1").innerHTML = "F1";
+            document.getElementById("a1").addEventListener("click", scoreDown);
                 
-        document.getElementById("a2").innerHTML = "goot";
+        document.getElementById("a2").innerHTML = "Ctrl+D";
             document.getElementById("a2").addEventListener("click", scoreDown);
 
-        document.getElementById("a3").innerHTML = "gate";
-            document.getElementById("a3").addEventListener("click", scoreDown);
+        document.getElementById("a3").innerHTML = "F12";
+            document.getElementById("a3").addEventListener("click", scoreUp);
 
-        document.getElementById("a4").innerHTML = "crunk";
+        document.getElementById("a4").innerHTML = "Ctrl+Shift+T";
             document.getElementById("a4").addEventListener("click", scoreDown);
 
-            document.getElementById("next").addEventListener("click", displayQuestion1);
+            document.getElementById("next").addEventListener("click", displayQuestion3);
 }
 
-//add functions for rest of questions, and on last question add function for game over, and 
-//run the save score and initials function
+function displayQuestion3() {
+    resetResponse();
+    document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[2];
+
+        document.getElementById("a1").innerHTML = "Upside down";
+            document.getElementById("a1").addEventListener("click", scoreDown);
+                
+        document.getElementById("a2").innerHTML = "Number";
+            document.getElementById("a2").addEventListener("click", scoreDown);
+
+        document.getElementById("a3").innerHTML = "String";
+            document.getElementById("a3").addEventListener("click", scoreDown);
+
+        document.getElementById("a4").innerHTML = "False";
+            document.getElementById("a4").addEventListener("click", scoreUp);
+
+            document.getElementById("next").addEventListener("click", displayQuestion4);
+}
+
+function displayQuestion4() {
+    resetResponse();
+    document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[3];
+
+        document.getElementById("a1").innerHTML = "String";
+            document.getElementById("a1").addEventListener("click", scoreDown);
+                
+        document.getElementById("a2").innerHTML = "Number";
+            document.getElementById("a2").addEventListener("click", scoreDown);
+
+        document.getElementById("a3").innerHTML = "Boolean";
+            document.getElementById("a3").addEventListener("click", scoreDown);
+
+        document.getElementById("a4").innerHTML = "Loop";
+            document.getElementById("a4").addEventListener("click", scoreUp);
+
+            document.getElementById("next").addEventListener("click", displayQuestion5);
+}
+
+function displayQuestion5() {
+    resetResponse();
+    document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[4];
+
+        document.getElementById("a1").innerHTML = "Let";
+            document.getElementById("a1").addEventListener("click", scoreDown);
+                
+        document.getElementById("a2").innerHTML = "This";
+            document.getElementById("a2").addEventListener("click", scoreUp);
+
+        document.getElementById("a3").innerHTML = "Var";
+            document.getElementById("a3").addEventListener("click", scoreDown);
+
+        document.getElementById("a4").innerHTML = "Const";
+            document.getElementById("a4").addEventListener("click", scoreDown);
+
+            document.getElementById("next").addEventListener("click", displayScore); //last question: display the score.
+}
+
+function resetResponse(){
+    document.getElementById("rw").innerHTML = "";
+}
 
 function scoreUp() {
     document.getElementById("rw").innerHTML = "Correct!";
@@ -82,7 +134,7 @@ function scoreDown() {
     document.getElementById("rw").innerHTML = "Incorrect!"
     score--;
     //timer - 5; //how to get it to remove time on incorrect answer?
-    console.log(score); 
+    
     }
 
 }
@@ -154,20 +206,28 @@ function saveScore (){
     
 }
 
+function displayScore(){
+    if (score <= 5) {
+        window.alert("you could use some practice!");
+        
+    } else {
+        window.alert("nicely done!");
+    }
+
+    document.getElementById("score").innerHTML = "Your score is " + score;
+    initials = window.prompt("enter your initials!");
+    if (initials === ""){
+        window.alert("no initials saved!");
+        initials = "Anonymous";
+    }
+    document.getElementById("initials").innerHTML = "Your initials are: " + initials;
+    localStorage.setItem("previous score: ", score);
+    localStorage.setItem("Initials: ", initials);
+
+}
 
 
 
-
-//known problems**
-
-//timer?
-//buttons?
-//local storage overwrites: do i want it to add a new one each time so one can keep track of all their
-//scores?
-
-//cant get timer to subtract on incorrect
-//buttons are sometimes not responsive
-    //also ugly
 
 
 
