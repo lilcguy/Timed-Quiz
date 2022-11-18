@@ -42,7 +42,7 @@ function displayQuestion1() {
 
 function displayQuestion2() {
     resetResponse();
-    document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[1];
+    document.getElementById("q").innerHTML = "Question: " + questions[1];
 
         document.getElementById("a1").innerHTML = "F1";
             document.getElementById("a1").addEventListener("click", scoreDown);
@@ -61,7 +61,7 @@ function displayQuestion2() {
 
 function displayQuestion3() {
     resetResponse();
-    document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[2];
+    document.getElementById("q").innerHTML = "Question: " + questions[2];
 
         document.getElementById("a1").innerHTML = "Upside down";
             document.getElementById("a1").addEventListener("click", scoreDown);
@@ -80,7 +80,7 @@ function displayQuestion3() {
 
 function displayQuestion4() {
     resetResponse();
-    document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[3];
+    document.getElementById("q").innerHTML = "Question: " + questions[3];
 
         document.getElementById("a1").innerHTML = "String";
             document.getElementById("a1").addEventListener("click", scoreDown);
@@ -99,7 +99,7 @@ function displayQuestion4() {
 
 function displayQuestion5() {
     resetResponse();
-    document.getElementById("q").innerHTML = "Question " + pos + ": " + questions[4];
+    document.getElementById("q").innerHTML = "Question: " + questions[4];
 
         document.getElementById("a1").innerHTML = "Let";
             document.getElementById("a1").addEventListener("click", scoreDown);
@@ -122,20 +122,22 @@ function resetResponse(){
 
 function scoreUp() {
     document.getElementById("rw").innerHTML = "Correct!";
+    
     score++;
     console.log(score);
-    position();
+    
 }
 
 function scoreDown() {
     if (score <= 0 ){
         score + 0
-    } else {
+    } 
     document.getElementById("rw").innerHTML = "Incorrect!"
     score--;
-    //timer - 5; //how to get it to remove time on incorrect answer?
+    console.log(score);
     
-    }
+    
+    
 
 }
 
@@ -192,8 +194,8 @@ function saveScore (){
     }
 
     initials = window.prompt("enter your initials!");
-    console.log(initials);
-    console.log(score);
+    //console.log(initials);
+    //console.log(score);
     window.alert("thanks! your initials and score have been saved to local storage.")
 
     localStorage.setItem("previous score: ", score)
@@ -207,7 +209,7 @@ function saveScore (){
 }
 
 function displayScore(){
-    if (score <= 5) {
+    if (score <= 3) {
         window.alert("you could use some practice!");
         
     } else {
@@ -221,7 +223,7 @@ function displayScore(){
         initials = "Anonymous";
     }
     document.getElementById("initials").innerHTML = "Your initials are: " + initials;
-    localStorage.setItem("previous score: ", score);
+    localStorage.setItem("score: ", score);
     localStorage.setItem("Initials: ", initials);
 
 }
