@@ -157,6 +157,8 @@ function reset() {
     document.getElementById("a3").innerHTML = "";
     document.getElementById("a4").innerHTML = "";
     document.getElementById("rw").innerHTML = "";
+    document.getElementById("score").innerHTML = "";
+    document.getElementById("initials").innerHTML = "";
     
 }
 
@@ -184,29 +186,8 @@ displayQuestion1();
 }
 
 
-function saveScore (){
-    
-    if (score <= 5) {
-        window.alert("you could use some practice!");
-        
-    } else {
-        window.alert("nicely done!");
-    }
 
-    initials = window.prompt("enter your initials!");
-    //console.log(initials);
-    //console.log(score);
-    window.alert("thanks! your initials and score have been saved to local storage.")
 
-    localStorage.setItem("previous score: ", score)
-    localStorage.setItem("Initials: ", initials);
-
-    
-
-    //enter initials into local storage
-    //insert element that gets value and displays
-    
-}
 
 function displayScore(){
     if (score <= 3) {
